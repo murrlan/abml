@@ -67,6 +67,13 @@ export async function POST(request: Request) {
     // Clean phone number before storing (consistent with validation)
     const cleanedPhone = body.phone ? String(body.phone).replace(/[^0-9+()\-\s]/g, '') : null
 
+    if (!supabase) {
+      return new Response(JSON.stringify({ error: 'Supabase is not configured.' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    }
+
     const { data, error } = await supabase
       .from('leads')
       .insert([

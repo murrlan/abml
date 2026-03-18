@@ -144,6 +144,7 @@ export async function POST(request: Request) {
     const botMessage =
       data.message?.content?.trim() ?? 'Sorry, I could not generate a response.'
 
+  if (supabase) {
     await supabase.from('chatbot_conversations').insert({
       conversation_id: conversationId,
       user_message: message.trim(),
@@ -159,6 +160,7 @@ export async function POST(request: Request) {
         message: `Chatbot inquiry - conversation ${conversationId}`,
       })
     }
+  }
 
     const interestKeywords = [
       'price',

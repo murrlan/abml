@@ -116,9 +116,13 @@ export async function getPortfolioProjects(): Promise<PortfolioProject[]> {
       return LOCAL_PORTFOLIO_FALLBACK.map(withFallbackLiveUrl)
     }
 
-    if (!data) return LOCAL_PORTFOLIO_FALLBACK.map(withFallbackLiveUrl)
+    if (!data || !Array.isArray(data)) {
+      return LOCAL_PORTFOLIO_FALLBACK.map(withFallbackLiveUrl)
+    }
 
-    return data.map((row: Record<string, unknown>): PortfolioProject =>
+    const rows = data as unknown as Record<string, unknown>[]
+
+    return rows.map((row): PortfolioProject =>
       withFallbackLiveUrl({
         id: String(row.id),
         slug: row.slug as string,
@@ -210,7 +214,7 @@ export async function getPortfolioProjectBySlug(
       )
     }
 
-    const row = data as Record<string, unknown>
+    const row = data as unknown as Record<string, unknown>
     return withFallbackLiveUrl({
       id: String(row.id),
       slug: row.slug as string,
