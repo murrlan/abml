@@ -11,7 +11,7 @@ export default function AboutPage() {
               href="/"
               className="text-xl font-bold text-zinc-900 dark:text-white hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors"
             >
-              Zootown Web Design
+              406 Web Design
             </Link>
             <div className="flex items-center gap-6">
               <Link

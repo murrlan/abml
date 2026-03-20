@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Get in Touch | Contact Us",
-  description: "Contact us to learn more about our services. We're here to help you grow your business with modern web solutions and automation.",
+  title: "Get in Touch | 406 Web Design",
+  description: "Contact 406 Web Design to learn more about our services. We're here to help you grow your business with modern web solutions and automation.",
 };
 
 export default function RootLayout({

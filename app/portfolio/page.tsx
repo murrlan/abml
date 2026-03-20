@@ -19,7 +19,7 @@ export default async function Portfolio() {
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
             <Link href="/" className="text-xl font-bold text-zinc-900 dark:text-white hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors">
-              Zootown Web Design
+              406 Web Design
             </Link>
             <div className="flex items-center gap-6">
               <Link href="/" className="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
