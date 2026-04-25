@@ -5,6 +5,13 @@ function assertContactPublicEnvAtBuild(): void {
   if (process.env.SKIP_CONTACT_ENV_CHECK === '1') {
     return
   }
+
+  // Vercel Preview (and `development`) often ship before env is wired; /contact shows ContactEnvAlert until then.
+  const vercelEnv = process.env.VERCEL_ENV
+  if (process.env.VERCEL === '1' && vercelEnv && vercelEnv !== 'production') {
+    return
+  }
+
   const email = (process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? '').trim()
   const phone = (process.env.NEXT_PUBLIC_CONTACT_PHONE ?? '').trim()
   const missing: string[] = []
@@ -13,7 +20,8 @@ function assertContactPublicEnvAtBuild(): void {
   if (missing.length) {
     throw new Error(
       `[next.config] Missing or empty required public contact environment variables: ${missing.join(', ')}. ` +
-        `Set them in .env.local (see .env.example) or set SKIP_CONTACT_ENV_CHECK=1 only for local experiments.`
+        `For Vercel Production: Project → Settings → Environment Variables → add both (see .env.example). ` +
+        `Locally: .env.local, or SKIP_CONTACT_ENV_CHECK=1 only for experiments.`
     )
   }
 }
