@@ -1,8 +1,17 @@
-"use client"
+'use client'
 
 import { useState, useEffect } from 'react'
 
 type MeetingType = 'phone' | 'zoom' | 'in-person' | null
+
+type CalendlyGlobal = {
+  initInlineWidget?: (opts: Record<string, unknown>) => void
+}
+
+function getCalendly(): CalendlyGlobal | undefined {
+  if (typeof window === 'undefined') return undefined
+  return (window as unknown as { Calendly?: CalendlyGlobal }).Calendly
+}
 
 interface BookingModalProps {
   isOpen: boolean
@@ -14,62 +23,48 @@ interface BookingModalProps {
 export default function BookingModal({ isOpen, onClose, leadName, leadEmail }: BookingModalProps) {
   const [selectedMeetingType, setSelectedMeetingType] = useState<MeetingType>(null)
   const [calendlyUrl, setCalendlyUrl] = useState<string | null>(null)
-  const [calendlyReady, setCalendlyReady] = useState(false)
-  const [loadingCalendly, setLoadingCalendly] = useState(false)
 
   useEffect(() => {
-    if (isOpen) {
-      // Load Calendly script
-      const loadCalendlyScript = async () => {
-        if (typeof window === 'undefined') return
-        
-        // Check if already loaded
-        if ((window as any).Calendly) {
-          setCalendlyReady(true)
-          return
-        }
+    if (!isOpen) return
 
-        // Check if script already exists
-        const existing = document.querySelector(`script[src="https://assets.calendly.com/assets/external/widget.js"]`)
-        if (existing) {
-          // Wait for it to load
+    const loadCalendlyScript = async () => {
+      if (typeof window === 'undefined') return
+      if (getCalendly()) return
+
+      const existing = document.querySelector(
+        `script[src="https://assets.calendly.com/assets/external/widget.js"]`
+      )
+      if (existing) {
+        await new Promise<void>((resolve) => {
           const checkCalendly = setInterval(() => {
-            if ((window as any).Calendly) {
-              setCalendlyReady(true)
+            if (getCalendly()) {
               clearInterval(checkCalendly)
+              resolve()
             }
           }, 100)
-          return () => clearInterval(checkCalendly)
-        }
-
-        setLoadingCalendly(true)
-        return new Promise<void>((resolve, reject) => {
-          const src = 'https://assets.calendly.com/assets/external/widget.js'
-          const s = document.createElement('script')
-          s.src = src
-          s.async = true
-          s.onload = () => {
-            // Give it a moment to initialize
-            setTimeout(() => {
-              setCalendlyReady(true)
-              setLoadingCalendly(false)
-              resolve()
-            }, 100)
-          }
-          s.onerror = (e) => {
-            setLoadingCalendly(false)
-            console.error('Failed to load Calendly script', e)
-            reject(e)
-          }
-          document.head.appendChild(s)
         })
+        return
       }
 
-      loadCalendlyScript().catch((err) => {
-        console.error('Calendly script loading error:', err)
-        setLoadingCalendly(false)
+      await new Promise<void>((resolve, reject) => {
+        const src = 'https://assets.calendly.com/assets/external/widget.js'
+        const s = document.createElement('script')
+        s.src = src
+        s.async = true
+        s.onload = () => {
+          setTimeout(resolve, 100)
+        }
+        s.onerror = (e) => {
+          console.error('Failed to load Calendly script', e)
+          reject(e)
+        }
+        document.head.appendChild(s)
       })
     }
+
+    void loadCalendlyScript().catch((err) => {
+      console.error('Calendly script loading error:', err)
+    })
   }, [isOpen])
 
   // Calendly URLs for each meeting type
@@ -166,10 +161,10 @@ export default function BookingModal({ isOpen, onClose, leadName, leadEmail }: B
               </svg>
             </div>
             <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-2">
-              Great! Let's Schedule a Consultation
+              Great! Let&apos;s schedule a consultation
             </h3>
             <p className="text-zinc-600 dark:text-zinc-400">
-              Choose your preferred meeting type and we'll show you available timeslots.
+              Choose your preferred meeting type and we&apos;ll show you available timeslots.
             </p>
           </div>
 
@@ -244,17 +239,6 @@ export default function BookingModal({ isOpen, onClose, leadName, leadEmail }: B
               <p className="text-sm text-yellow-800 dark:text-yellow-200">
                 Calendly URL not configured for this meeting type. Please contact us directly to schedule a meeting.
               </p>
-            </div>
-          )}
-
-          {/* Debug info (remove in production) */}
-          {process.env.NODE_ENV === 'development' && selectedMeetingType && (
-            <div className="mt-4 p-3 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-xs text-zinc-600 dark:text-zinc-400">
-              <p>Debug Info:</p>
-              <p>Calendly URL: {calendlyUrl || 'Not set'}</p>
-              <p>Calendly Ready: {calendlyReady ? 'Yes' : 'No'}</p>
-              <p>Loading: {loadingCalendly ? 'Yes' : 'No'}</p>
-              <p>Calendly Object: {(window as any).Calendly ? 'Available' : 'Not available'}</p>
             </div>
           )}
 

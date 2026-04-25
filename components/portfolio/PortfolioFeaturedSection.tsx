@@ -9,161 +9,113 @@ export default function PortfolioFeaturedSection({ projects }: Props) {
   if (!projects.length) return null
 
   return (
-    <section className="max-w-5xl mx-auto mb-16 lg:mb-20">
-      <div className="mb-6 flex items-center justify-between gap-4">
-        <div>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-zinc-900 dark:text-white">
-            Featured projects
-          </h2>
-          <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-            A closer look at a few client projects, including the problem, solution, and results.
-          </p>
-        </div>
+    <section>
+      <div className="mb-10 border-b border-border pb-8">
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted">Featured</p>
+        <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Deep dives</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
+          Problem, solution, and results — the way we document real client work.
+        </p>
       </div>
 
-      <div className="grid gap-8 lg:gap-10 lg:grid-cols-2">
+      <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
         {projects.map((project) => (
           <article
             key={project.id}
-            className="group relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/80 shadow-sm hover:shadow-xl transition-all duration-300"
+            className="flex flex-col border border-border bg-background transition-colors hover:border-muted"
           >
-            {project.thumbnailImage && (
-              <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center">
+            {project.thumbnailImage ? (
+              <div className="relative flex h-48 w-full items-center justify-center border-b border-border bg-muted/5 sm:h-56">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={project.thumbnailImage}
-                  alt={project.title}
-                  className="h-full w-full object-contain"
+                  alt={`${project.title} project preview`}
+                  className="max-h-full max-w-full object-contain"
                 />
               </div>
-            )}
+            ) : null}
 
-            <div className="p-6 sm:p-7 lg:p-8">
-              <div className="flex flex-wrap items-center gap-2 mb-3">
-                {project.category && (
-                  <span className="inline-flex items-center rounded-full bg-zinc-100 dark:bg-zinc-800 px-3 py-1 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+            <div className="flex flex-1 flex-col p-6 sm:p-8">
+              <div className="mb-4 flex flex-wrap gap-2">
+                {project.category ? (
+                  <span className="border border-border px-2 py-1 text-xs font-medium uppercase tracking-wider text-muted">
                     {project.category}
                   </span>
-                )}
-                {project.clientName && (
-                  <span className="inline-flex items-center rounded-full bg-zinc-50 dark:bg-zinc-900 px-3 py-1 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-                    Client: {project.clientName}
-                  </span>
-                )}
+                ) : null}
+                {project.clientName ? (
+                  <span className="border border-border px-2 py-1 text-xs text-muted">Client: {project.clientName}</span>
+                ) : null}
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-semibold text-zinc-900 dark:text-white mb-2 group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-colors">
-                {project.title}
-              </h3>
+              <h3 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">{project.title}</h3>
 
-              {project.shortDescription && (
-                <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 mb-4">
-                  {project.shortDescription}
-                </p>
-              )}
+              {project.shortDescription ? (
+                <p className="mt-3 text-sm leading-relaxed text-muted">{project.shortDescription}</p>
+              ) : null}
 
-              {project.highlights.length > 0 && (
-                <ul className="mb-4 space-y-1.5 text-sm text-zinc-700 dark:text-zinc-300">
+              {project.highlights.length > 0 ? (
+                <ul className="mt-5 space-y-2 border-t border-border pt-5 text-sm text-muted">
                   {project.highlights.map((highlight) => (
                     <li key={highlight.id} className="flex gap-2">
-                      <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-500" />
+                      <span className="font-mono text-accent" aria-hidden>
+                        —
+                      </span>
                       <span>{highlight.text}</span>
                     </li>
                   ))}
                 </ul>
-              )}
+              ) : null}
 
-              <div className="grid gap-4 sm:grid-cols-3 mb-5 text-sm text-zinc-700 dark:text-zinc-300">
-                {project.problem && (
+              <div className="mt-6 grid gap-4 border-t border-border pt-6 sm:grid-cols-3">
+                {project.problem ? (
                   <div>
-                    <h4 className="mb-1 text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
-                      Problem
-                    </h4>
-                    <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 line-clamp-4">
-                      {project.problem}
-                    </p>
+                    <h4 className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">Problem</h4>
+                    <p className="mt-2 line-clamp-4 text-xs leading-relaxed text-muted">{project.problem}</p>
                   </div>
-                )}
-                {project.solution && (
+                ) : null}
+                {project.solution ? (
                   <div>
-                    <h4 className="mb-1 text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
-                      Solution
-                    </h4>
-                    <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 line-clamp-4">
-                      {project.solution}
-                    </p>
+                    <h4 className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">Solution</h4>
+                    <p className="mt-2 line-clamp-4 text-xs leading-relaxed text-muted">{project.solution}</p>
                   </div>
-                )}
-                {project.results && (
+                ) : null}
+                {project.results ? (
                   <div>
-                    <h4 className="mb-1 text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
-                      Results
-                    </h4>
-                    <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 line-clamp-4">
-                      {project.results}
-                    </p>
+                    <h4 className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">Results</h4>
+                    <p className="mt-2 line-clamp-4 text-xs leading-relaxed text-muted">{project.results}</p>
                   </div>
-                )}
+                ) : null}
               </div>
 
-              {project.technologies.length > 0 && (
-                <div className="mb-5 flex flex-wrap gap-2">
+              {project.technologies.length > 0 ? (
+                <div className="mt-5 flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-md bg-zinc-50 dark:bg-zinc-900 px-2.5 py-1 text-xs font-medium text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800"
-                    >
+                    <span key={tech} className="border border-border px-2 py-1 text-xs text-muted">
                       {tech}
                     </span>
                   ))}
                 </div>
-              )}
+              ) : null}
 
-              <div className="mt-2 flex flex-wrap items-center gap-3">
-                {project.slug && (
+              <div className="mt-auto flex flex-wrap gap-4 pt-8">
+                {project.slug ? (
                   <Link
                     href={`/portfolio/${project.slug}`}
-                    className="inline-flex items-center text-sm font-medium text-zinc-900 dark:text-white hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
+                    className="nav-link text-sm font-medium text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                   >
                     View case study
-                    <svg
-                      className="ml-1.5 h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                      />
-                    </svg>
                   </Link>
-                )}
-                {project.liveUrl && (
+                ) : null}
+                {project.liveUrl ? (
                   <Link
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm font-medium text-zinc-900 dark:text-white hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
+                    className="nav-link text-sm font-medium text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                   >
-                    View live site
-                    <svg
-                      className="ml-1.5 h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
+                    Live site
                   </Link>
-                )}
+                ) : null}
               </div>
             </div>
           </article>

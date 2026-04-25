@@ -3,20 +3,21 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --accent: #0f766e;
+  --accent-foreground: #ffffff;
+  --border: #e5e5e5;
+  --muted: #737373;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
@@ -25,13 +26,39 @@ body {
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .page-transition-inner {
+    animation: none !important;
+  }
 }
 
-/* Custom animations */
-@keyframes fade-in {
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes page-fade-in {
   from {
     opacity: 0;
   }
@@ -40,25 +67,92 @@ html {
   }
 }
 
-@keyframes slide-in-from-top {
-  from {
-    transform: translateY(-10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
+.page-transition-inner {
+  animation: page-fade-in 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition-inner {
+    animation: none;
     opacity: 1;
   }
 }
 
-.animate-in {
-  animation: fade-in 0.3s ease-out;
+/* Nav link: underline slides in */
+.nav-link {
+  position: relative;
+  text-decoration: none;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+}
+.nav-link[data-active="true"]::after {
+  transform: scaleX(1);
 }
 
-.fade-in {
-  animation: fade-in 0.3s ease-out;
+/* Primary button: fill left to right */
+.btn-primary {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  border: 1px solid var(--foreground);
+  background: transparent;
+  color: var(--foreground);
+  transition: color 0.25s ease;
+}
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn-primary:hover::before,
+  .btn-primary:focus-visible::before {
+    transform: scaleX(1);
+  }
+}
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  color: var(--accent-foreground);
+  border-color: var(--accent);
+}
+.btn-primary:disabled::before {
+  transform: scaleX(0);
+}
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
-.slide-in-from-top-2 {
-  animation: slide-in-from-top 0.3s ease-out;
+.btn-primary-solid {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  border: 1px solid var(--accent);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+.btn-primary-solid:hover,
+.btn-primary-solid:focus-visible {
+  filter: brightness(0.94);
 }
