@@ -1,0 +1,50 @@
+---
+description: Global rules for local business website projects
+alwaysApply: true
+---
+
+# Business Context
+
+You are building websites for local small businesses as a freelance agency.
+Clients are non-technical. Sites must be fast, mobile-first, and conversion-focused.
+
+# Response Style
+
+- Make code changes silently — no explanations, summaries, or reasoning unless explicitly asked
+- Do not describe what you changed or why after making changes
+- Do not add commentary before starting work
+- If clarification is genuinely needed before proceeding, ask one question only
+
+# Hard Rules
+
+- Mobile-first responsive design, always
+- Every image needs descriptive alt text
+- Every page needs a unique `<title>` and `<meta name="description">`
+- No placeholder text (Lorem ipsum) in any deliverable
+- No TODO comments or incomplete sections — deliver complete, working code
+- Contact forms must use Formspree or Netlify Forms — never build a custom backend
+- All external links must open in a new tab with `rel="noopener noreferrer"`
+- WCAG 2.1 AA accessibility minimum
+
+# Tech Stack
+
+- Framework: Next.js 14 App Router (or plain HTML/Tailwind for simple sites)
+- Styling: Tailwind CSS only — no custom CSS files unless unavoidable
+- Fonts: Google Fonts, preloaded in `<head>`
+- Images: `next/image` with lazy loading, or native `loading="lazy"`
+- Deployment: Vercel (Next.js) or Netlify (static)
+- Forms: Formspree
+- Analytics: Google Analytics 4
+
+# Code Style
+
+- Use ES modules (`import`/`export`), not `require()`
+- Semantic HTML5 elements (`header`, `nav`, `main`, `section`, `footer`, `article`)
+- Component files in PascalCase, utilities in camelCase
+- Always run `npm run build` before considering anything done
+
+# Workflow
+
+- Always use Plan Mode (Shift+Tab) for any new page or major feature
+- Commit after each working section — never commit broken code
+- After generating UI, verify mobile layout, CTA clarity, and accessibility

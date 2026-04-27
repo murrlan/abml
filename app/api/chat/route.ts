@@ -145,20 +145,26 @@ export async function POST(request: Request) {
       data.message?.content?.trim() ?? 'Sorry, I could not generate a response.'
 
   if (supabase) {
-    await supabase.from('chatbot_conversations').insert({
+    const { error: convoError } = await supabase.from('chatbot_conversations').insert({
       conversation_id: conversationId,
       user_message: message.trim(),
       bot_message: botMessage,
       metadata: email ? { email } : {},
     })
+    if (convoError) {
+      console.error('Failed to store chatbot conversation:', convoError.message)
+    }
 
     // If email provided, also capture as lead in contact_messages
     if (email?.trim()) {
-      await supabase.from('contact_messages').insert({
+      const { error: contactError } = await supabase.from('contact_messages').insert({
         name: 'Chatbot',
         email: email.trim(),
         message: `Chatbot inquiry - conversation ${conversationId}`,
       })
+      if (contactError) {
+        console.error('Failed to store chatbot contact message:', contactError.message)
+      }
     }
   }
 

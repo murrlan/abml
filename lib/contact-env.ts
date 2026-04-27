@@ -15,7 +15,7 @@ function trimOrEmpty(value: string | undefined): string {
   return typeof value === 'string' ? value.trim() : ''
 }
 
-/** Runtime values for mailto/tel (may be empty if build was skipped — contact page should guard). */
+/** Runtime values for mailto/tel (may be empty if build was skipped; contact page should guard). */
 export function getContactPublicConfig(): ContactPublicConfig {
   return {
     email: trimOrEmpty(process.env.NEXT_PUBLIC_CONTACT_EMAIL),

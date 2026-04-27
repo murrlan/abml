@@ -14,7 +14,7 @@ export default function PortfolioFeaturedSection({ projects }: Props) {
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted">Featured</p>
         <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Deep dives</h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-          Problem, solution, and results — the way we document real client work.
+          Problem, solution, and results. This is how we document real client work.
         </p>
       </div>
 
@@ -58,7 +58,7 @@ export default function PortfolioFeaturedSection({ projects }: Props) {
                   {project.highlights.map((highlight) => (
                     <li key={highlight.id} className="flex gap-2">
                       <span className="font-mono text-accent" aria-hidden>
-                        —
+                        -
                       </span>
                       <span>{highlight.text}</span>
                     </li>

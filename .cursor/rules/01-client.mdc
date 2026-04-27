@@ -1,0 +1,86 @@
+---
+description: Opal Web Design — agency's own website
+alwaysApply: true
+---
+
+# Client: Opal Web Design
+
+Industry: Web design agency serving local small businesses  
+Location: Missoula, Montana — weave into content naturally for local SEO  
+Phone: [add your number]  
+Email: [add your email]  
+Address: [add if applicable]
+
+# Team
+
+- **Murray Lane** — Chief Technical Officer (React/Next.js, Supabase, rapid prototyping)
+- **Asher Barnes** — Chief Marketing/Financial Officer (social media marketing, business strategy)
+
+# Current Site
+
+Live prototype: https://opalwebdesignmt.com  
+Pages: Home, Portfolio (`/portfolio`), About (`/about`)  
+Stack: Next.js, Tailwind CSS  
+One portfolio case study live: **Grizzly Lawn** (grizzlylawn.com)
+
+# This Site Is Different From Client Sites
+
+- Higher design bar than typical client deliverables — this is the **sales tool**
+- Animations and micro-interactions are appropriate here
+- Showcase technical capability visually — the site itself is the pitch
+- Must look credible to a **45-year-old small business owner** who is skeptical of hiring young teams
+- Every section should answer: **"Can I trust these people with my business?"**
+
+# Brand
+
+Tone: Confident, modern, direct — not corporate, not informal. Credible despite being young. Let the work speak.
+
+Primary color: Neutral prototype — `#171717` foreground / `#ffffff` background (`app/globals.css`); refine toward a distinct brand palette as the site evolves.  
+Secondary color: [define accent when brand palette is locked — e.g. CTA, links, highlights]  
+Font: **Geist Sans** (body/UI), **Geist Mono** (mono) — `next/font/google` in `app/layout.tsx`  
+Logo: `/public/logo.[ext]` — [confirm filename when asset is final]
+
+# Pages Needed
+
+- **Home** — hero, value proposition, services overview, social proof, CTA (not contact-only)
+- **Services** — what you offer, how it works, pricing (if sharing publicly)
+- **Portfolio** — case studies in problem / solution / results format (Grizzly Lawn + room for more)
+- **About** — team, mission, credibility signals (honest “young team” framing balanced with proof)
+- **Contact** — form + direct contact info
+
+# Key CTAs
+
+- **Primary:** "Get a Free Quote" or "Let's Talk" → contact form  
+- **Secondary:** "View Our Work" → portfolio
+
+# SEO Target Keywords
+
+- web design Missoula MT  
+- website design Missoula  
+- small business website Montana  
+- Missoula web designer  
+
+# What the Current Prototype Is Missing
+
+- Homepage has no hero or value proposition — effectively contact-first; visitors who do not already know you will bounce
+- No dedicated **Services** page
+- No pricing or **process** explanation (what clients get, timeline, expectations)
+- No trust signals (testimonials, sites shipped count, turnaround, guarantees where appropriate)
+- Portfolio depth: one project — strengthen Grizzly Lawn as a **results** case study and/or add more work
+- No clear **differentiation** from larger agencies (speed, local, stack, outcomes)
+
+# Credibility Priorities
+
+1. Real case studies with **measurable** results (not screenshots alone)
+2. Fast load times — **Lighthouse 90+** on Performance and Accessibility where feasible
+3. Polished **mobile** experience first
+4. Testimonials from real clients when available
+5. Clear, simple **process** and deliverables — what happens after they click “Get a quote”
+
+# “Young Team” Angle
+
+The About page can stay honest. Skeptical owners need **proof over claims**: case studies, performance, polish, and clarity beat defensive copy.
+
+# Homepage Job (Non-Negotiable)
+
+Lead with **who you are**, **what you do**, and **why a Missoula business should trust you** — then route to contact. The form is a close, not the opening.

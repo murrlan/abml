@@ -150,7 +150,7 @@ export default function Chatbot() {
           className="border-t border-zinc-200 bg-gray-50 p-3 dark:border-zinc-700 dark:bg-zinc-950"
         >
           <p className="mb-2 text-xs text-zinc-600 dark:text-zinc-400">
-            Get a personalized quote — enter your email:
+            Get a personalized quote. Enter your email:
           </p>
           <div className="flex gap-2">
             <input

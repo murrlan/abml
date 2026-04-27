@@ -7,7 +7,7 @@ export default function SiteFooter() {
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Opal Web Design</p>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
-            Web design and modern sites for Missoula-area small businesses — fast, mobile-first, and built to earn trust.
+            Web design and modern sites for Missoula-area small businesses that are fast, mobile-first, and built to earn trust.
           </p>
         </div>
         <div className="flex flex-wrap gap-10 text-sm">

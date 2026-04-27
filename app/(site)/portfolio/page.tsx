@@ -8,7 +8,7 @@ import RevealOnScroll from '@/components/RevealOnScroll'
 export const metadata: Metadata = {
   title: 'Portfolio',
   description:
-    'Selected web design and Next.js projects by Opal Web Design — case studies for Missoula-area and Montana small businesses.',
+    'Selected web design and Next.js projects by Opal Web Design for Missoula-area and Montana small businesses.',
 }
 
 export default async function PortfolioPage() {
@@ -27,7 +27,7 @@ export default async function PortfolioPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
             Each project here is documented the way we would want to read it as a buyer: what was broken, what we
-            shipped, and what changed for the business — without fluff.
+            shipped, and what changed for the business without fluff.
           </p>
         </div>
       </section>
@@ -49,7 +49,7 @@ export default async function PortfolioPage() {
               href="/contact"
               className="btn-primary-solid mt-8 inline-flex min-h-11 items-center justify-center rounded px-8 py-3.5 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
-              Contact
+              Get a free quote
             </Link>
           </div>
         )}
@@ -64,7 +64,7 @@ export default async function PortfolioPage() {
               href="/contact"
               className="btn-primary-solid mt-8 inline-flex min-h-11 items-center justify-center rounded px-8 py-3.5 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
-              Start a conversation
+              Get a free quote
             </Link>
           </div>
         </RevealOnScroll>

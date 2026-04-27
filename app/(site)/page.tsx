@@ -5,7 +5,7 @@ import RevealOnScroll from '@/components/RevealOnScroll'
 export const metadata: Metadata = {
   title: 'Web design for Missoula small businesses',
   description:
-    'Opal Web Design builds fast, mobile-first Next.js websites for Missoula-area small businesses — clear messaging, strong performance, and a straightforward process.',
+    'Opal Web Design builds fast, mobile-first Next.js websites for Missoula-area small businesses with clear messaging, strong performance, and a straightforward process.',
 }
 
 const proofItems = [
@@ -55,7 +55,7 @@ export default function HomePage() {
             <div>
               <h3 className="text-lg font-semibold text-foreground">Clarity</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted">
-                Messaging and layout that explain what you do in seconds — especially on a phone — so busy customers
+                Messaging and layout that explain what you do in seconds, especially on a phone, so busy customers
                 understand why they should choose you.
               </p>
             </div>
@@ -69,7 +69,7 @@ export default function HomePage() {
             <div>
               <h3 className="text-lg font-semibold text-foreground">Process</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted">
-                A short, transparent timeline from kickoff to launch. You always know what happens next — see{' '}
+                A short, transparent timeline from kickoff to launch. You always know what happens next. See{' '}
                 <Link className="text-accent underline-offset-4 hover:underline" href="/services">
                   Services
                 </Link>{' '}
@@ -97,7 +97,7 @@ export default function HomePage() {
             ))}
           </ul>
           <p className="mt-10 max-w-2xl text-sm leading-relaxed text-muted">
-            We let case studies and build quality answer skepticism — see{' '}
+            We let case studies and build quality answer skepticism. See{' '}
             <Link href="/portfolio/grizzly-lawn" className="text-accent underline-offset-4 hover:underline">
               Grizzly Lawn
             </Link>{' '}
@@ -112,14 +112,14 @@ export default function HomePage() {
             <div>
               <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Ready when you are.</h2>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">
-                Tell us about your business and goals. We will respond with next steps — no pressure, no runaround.
+                Tell us about your business and goals. We will respond with next steps. No pressure. No runaround.
               </p>
             </div>
             <Link
               href="/contact"
               className="btn-primary-solid inline-flex min-h-11 shrink-0 items-center justify-center self-start rounded px-8 py-3.5 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:self-center"
             >
-              Let&apos;s talk
+              Get a free quote
             </Link>
           </div>
         </div>

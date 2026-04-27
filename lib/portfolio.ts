@@ -41,13 +41,14 @@ export type PortfolioProject = {
   technologies: string[]
   thumbnailImage?: string | null
   galleryImages?: string[] | null
+  hasPlaceholderScreenshots?: boolean
   testimonial?: PortfolioTestimonial
   lighthouseSnapshot?: PortfolioLighthouseSnapshot | null
 }
 
 const TABLE_NAME = 'portfolio_projects'
 
-/** One automated Lighthouse run (mobile), grizzlylawn.com — scores vary by network and device. */
+/** One automated Lighthouse run (mobile), grizzlylawn.com. Scores vary by network and device. */
 const GRIZZLY_LIGHTHOUSE: PortfolioLighthouseSnapshot = {
   auditedAt: '2026-04-25',
   url: 'https://grizzlylawn.com/',
@@ -55,11 +56,22 @@ const GRIZZLY_LIGHTHOUSE: PortfolioLighthouseSnapshot = {
   accessibilityScore: 96,
 }
 
+const WILLYS_LIGHTHOUSE: PortfolioLighthouseSnapshot = {
+  auditedAt: '2026-04-27',
+  url: 'https://willysauto406.com/',
+  performanceScore: 66,
+  accessibilityScore: 93,
+}
+
 const GRIZZLY_RESULTS = `Grizzly Lawn went from no dedicated marketing site to a fully launched, mobile-first Next.js experience built to turn local search traffic into quote requests. The project shipped quickly with clear service pages, trust-forward copy, and conversion-focused calls to action.
 
 We do not publish client business metrics without permission. Qualitatively, the site gives the business a credible first impression, explains the offer fast on a phone, and removes friction from getting in touch.
 
-Lighthouse snapshot (automated mobile run, ${GRIZZLY_LIGHTHOUSE.auditedAt}): Performance ${GRIZZLY_LIGHTHOUSE.performanceScore}, Accessibility ${GRIZZLY_LIGHTHOUSE.accessibilityScore}. Real-world scores change with content, hosting, and third-party scripts — this snapshot documents one measured point in time on the live URL.`
+Lighthouse snapshot (automated mobile run, ${GRIZZLY_LIGHTHOUSE.auditedAt}): Performance ${GRIZZLY_LIGHTHOUSE.performanceScore}, Accessibility ${GRIZZLY_LIGHTHOUSE.accessibilityScore}. Real-world scores change with content, hosting, and third-party scripts. This snapshot documents one measured point in time on the live URL.`
+
+const WILLYS_RESULTS = `Willy's Auto went from zero online presence to a fully launched, mobile-first site optimized for local search. Missoula drivers can now find the shop online, verify hours and services, and reach the team quickly.
+
+Lighthouse snapshot as of ${WILLYS_LIGHTHOUSE.auditedAt} (automated mobile run): Performance ${WILLYS_LIGHTHOUSE.performanceScore}, Accessibility ${WILLYS_LIGHTHOUSE.accessibilityScore}. Real-world scores can vary over time based on content, hosting, and third-party scripts.`
 
 const LOCAL_PORTFOLIO_FALLBACK: PortfolioProject[] = [
   {
@@ -75,7 +87,7 @@ const LOCAL_PORTFOLIO_FALLBACK: PortfolioProject[] = [
     isFeatured: true,
     launchDate: null,
     problem: `Grizzly Lawn needed more than a social page: a professional home on the web that explained services clearly, built trust with Missoula-area homeowners, and made requesting a quote feel easy on a phone.`,
-    solution: `We designed and built a lean marketing site in Next.js and Tailwind CSS — fast loads, strong typography hierarchy, service-focused pages, and CTAs placed where intent is highest. Everything is structured for local relevance and long-term maintainability.`,
+    solution: `We designed and built a lean marketing site in Next.js and Tailwind CSS with fast loads, strong typography hierarchy, service-focused pages, and CTAs placed where intent is highest. Everything is structured for local relevance and long-term maintainability.`,
     results: GRIZZLY_RESULTS,
     process: null,
     highlights: [
@@ -88,10 +100,46 @@ const LOCAL_PORTFOLIO_FALLBACK: PortfolioProject[] = [
     testimonial: null,
     lighthouseSnapshot: GRIZZLY_LIGHTHOUSE,
   },
+  {
+    id: 'local-willys-auto',
+    slug: 'willys-auto',
+    title: "Willy's Auto",
+    shortDescription:
+      'A mobile-first website for a long running Missoula auto repair shop. Built to convert local search traffic into calls.',
+    clientName: "Willy's Auto",
+    liveUrl: 'https://willysauto406.com',
+    repoUrl: null,
+    category: 'Auto repair',
+    isFeatured: true,
+    launchDate: '2026-04-23',
+    problem:
+      "Established local auto shop with 20+ years in business but no web presence. Customers couldn't find them online, verify hours, or confirm services before calling.",
+    solution:
+      "Built a mobile-first website that clearly presents services, establishes trust through the shop's history, and makes it easy for Missoula drivers to contact or find them.",
+    results: WILLYS_RESULTS,
+    process: null,
+    highlights: [
+      { id: 'willys-highlight-1', text: 'Zero to fully launched in days' },
+      { id: 'willys-highlight-2', text: 'Built for local search in Missoula MT' },
+    ],
+    technologies: ['Next.js', 'Tailwind CSS'],
+    thumbnailImage: null,
+    galleryImages: null,
+    hasPlaceholderScreenshots: true,
+    testimonial: null,
+    lighthouseSnapshot: WILLYS_LIGHTHOUSE,
+  },
 ]
 
 const KNOWN_LIVE_URLS: Array<{ match: (p: Pick<PortfolioProject, 'slug' | 'title' | 'clientName'>) => boolean; url: string }> =
   [
+    {
+      match: (p) =>
+        (p.slug ?? '').toLowerCase().includes('willy') ||
+        (p.title ?? '').toLowerCase().includes('willy') ||
+        (p.clientName ?? '').toLowerCase().includes('willy'),
+      url: 'https://willysauto406.com',
+    },
     {
       match: (p) =>
         (p.slug ?? '').toLowerCase().includes('grizzly') ||

@@ -7,7 +7,7 @@ import { getContactPublicConfig, isContactPublicConfigComplete } from '@/lib/con
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Contact Opal Web Design for a quote — web design and Next.js builds for Missoula-area small businesses. Call, email, or use the form.',
+    'Contact Opal Web Design for a quote on web design and Next.js builds for Missoula-area small businesses. Call, email, or use the form.',
 }
 
 function telHref(phone: string) {

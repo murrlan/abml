@@ -155,7 +155,7 @@ export default async function PortfolioProjectPage({ params }: Props) {
                   >
                     {lh.url}
                   </a>{' '}
-                  — {lh.auditedAt}. Scores are a single point in time; real-world results vary.
+                  ({lh.auditedAt}). Scores are a single point in time; real-world results vary.
                 </p>
                 <dl className="mt-6 grid grid-cols-2 gap-4 text-sm sm:max-w-md">
                   <div className="border border-border p-4">
@@ -176,7 +176,7 @@ export default async function PortfolioProjectPage({ params }: Props) {
                 <blockquote className="mt-4 text-base leading-relaxed text-foreground">
                   <p>&ldquo;{project.testimonial.quote}&rdquo;</p>
                   <footer className="mt-4 text-sm text-muted">
-                    — {project.testimonial.attribution}
+                    - {project.testimonial.attribution}
                     {project.testimonial.role ? `, ${project.testimonial.role}` : ''}
                   </footer>
                 </blockquote>

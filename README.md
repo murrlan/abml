@@ -49,6 +49,15 @@ This project uses environment variables for configuration. Add them to `.env.loc
 - `N8N_WEBHOOK_URL` — Your n8n workflow webhook URL (for automation)
 - `NEXT_PUBLIC_CALENDLY_URL` — Your Calendly public scheduling page (e.g., `https://calendly.com/your-username/30min`). If set, the frontend will show a "Book time" button.
 
+### Required Supabase Tables
+
+- `public.leads` for contact form submissions
+- `public.chatbot_conversations` for chatbot history
+
+If `public.leads` is missing, run the SQL in:
+
+- `supabase/migrations/20260426000100_create_leads_table.sql`
+
 ### Local Setup
 
 Create a `.env.local` file in the root directory:

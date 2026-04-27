@@ -20,7 +20,12 @@ export const metadata: Metadata = {
     template: '%s | Opal Web Design',
   },
   description:
-    'Opal Web Design builds fast, mobile-first websites for Missoula-area small businesses — Next.js, Tailwind CSS, and a clear process from quote to launch.',
+    'Opal Web Design builds fast, mobile-first websites for Missoula-area small businesses using Next.js, Tailwind CSS, and a clear process from quote to launch.',
+  icons: {
+    icon: '/opal.png',
+    shortcut: '/opal.png',
+    apple: '/opal.png',
+  },
 }
 
 export default function RootLayout({

@@ -15,7 +15,7 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted">Services</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Modern sites for local businesses — scoped, fast, and built to convert.
+            Modern sites for local businesses that are scoped, fast, and built to convert.
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
             Most projects are marketing sites and landing experiences: clear story, services, proof, and a strong
@@ -31,25 +31,25 @@ export default function ServicesPage() {
           <ul className="mt-10 max-w-3xl space-y-4 border-t border-border pt-10 text-sm leading-relaxed text-muted">
             <li className="flex gap-3">
               <span className="font-mono text-accent" aria-hidden>
-                —
+                -
               </span>
               <span>Discovery call to align on audience, offers, and the action you want visitors to take.</span>
             </li>
             <li className="flex gap-3">
               <span className="font-mono text-accent" aria-hidden>
-                —
+                -
               </span>
-              <span>Information architecture and copy structure — mobile layout first.</span>
+              <span>Information architecture and copy structure with mobile layout first.</span>
             </li>
             <li className="flex gap-3">
               <span className="font-mono text-accent" aria-hidden>
-                —
+                -
               </span>
               <span>Custom UI in Tailwind CSS, implemented in Next.js with performance and accessibility in mind.</span>
             </li>
             <li className="flex gap-3">
               <span className="font-mono text-accent" aria-hidden>
-                —
+                -
               </span>
               <span>Launch support: DNS and hosting handoff, basic analytics hookup guidance, and a short punch list window after go-live.</span>
             </li>
@@ -100,10 +100,10 @@ export default function ServicesPage() {
           <h2 className="mt-4 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">What to expect</h2>
           <div className="mt-10 max-w-3xl border-t border-border pt-10 text-sm leading-relaxed text-muted">
             <p>
-              Many marketing sites move from kickoff to launch in <strong className="font-medium text-foreground">days to a few weeks</strong>, not months — depending on content readiness, number of pages, and integrations. We will give you a written timeline after we understand scope.
+              Many marketing sites move from kickoff to launch in <strong className="font-medium text-foreground">days to a few weeks</strong>, not months, depending on content readiness, number of pages, and integrations. We will give you a written timeline after we understand scope.
             </p>
             <p className="mt-6">
-              After you submit the contact form, we follow up with questions and a proposal outline. If it is a fit, we schedule a call and lock dates. No hidden phases — see our{' '}
+              After you submit the contact form, we follow up with questions and a proposal outline. If it is a fit, we schedule a call and lock dates. No hidden phases. See our{' '}
               <Link href="/portfolio/grizzly-lawn" className="text-accent underline-offset-4 hover:underline">
                 Grizzly Lawn case study
               </Link>{' '}
@@ -118,7 +118,7 @@ export default function ServicesPage() {
           <div className="border border-border px-8 py-12 sm:px-12">
             <h2 className="text-xl font-semibold text-foreground sm:text-2xl">Pricing</h2>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
-              We quote after a short scope conversation — every business has different page count, content, and
+              We quote after a short scope conversation because every business has different page count, content, and
               integrations. Contact us with your goals and we will respond with a clear range and what it includes.
             </p>
             <Link

@@ -86,12 +86,12 @@ export default function ContactLeadForm() {
         }
       } else {
         setStatusType('success')
-        setStatusMessage('Thanks — your response was recorded!')
+        setStatusMessage('Thanks. Your response was recorded.')
         setErrors({})
       }
     } catch {
       setStatusType('error')
-      setStatusMessage('Network error — please try again')
+      setStatusMessage('Network error. Please try again.')
     } finally {
       setSubmitting(false)
     }

@@ -6,7 +6,7 @@ import RevealOnScroll from '@/components/RevealOnScroll'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Meet the Opal Web Design team — Murray Lane and Asher Barnes — and learn how we approach web projects for Missoula small businesses.',
+    'Meet the Opal Web Design team, Murray Lane and Asher Barnes, and learn how we approach web projects for Missoula small businesses.',
 }
 
 export default function AboutPage() {
@@ -29,12 +29,12 @@ export default function AboutPage() {
         <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-24">
           <h2 className="text-xs font-semibold uppercase tracking-[0.22em] text-muted">Mission</h2>
           <p className="mt-6 text-base leading-relaxed text-muted">
-            We build websites that are fast, functional, and easy to maintain — at pricing that makes sense for local
+            We build websites that are fast, functional, and easy to maintain at pricing that makes sense for local
             businesses. Our focus is helping Missoula-area companies look as credible online as they are in person.
           </p>
           <p className="mt-6 text-base leading-relaxed text-muted">
             We combine current tooling with direct communication: you work with the people doing the work, not layers
-            of account managers. If you want references and examples relevant to your industry, ask — we will point you
+            of account managers. If you want references and examples relevant to your industry, ask. We will point you
             to specifics, not adjectives.
           </p>
         </div>
@@ -62,7 +62,8 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold text-foreground">Murray Lane</h3>
                 <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent">Chief Technical Officer</p>
                 <p className="mt-4 text-sm leading-relaxed text-muted">
-                  Murray focuses on modern web technologies and rapid prototyping — React, Next.js, and shipping
+                  Murray focuses on modern web technologies and rapid prototyping, including React and Next.js, and
+                  shipping
                   performant interfaces. He is a student at Hellgate High School and leads the technical delivery on
                   projects.
                 </p>
@@ -121,14 +122,14 @@ export default function AboutPage() {
           <div className="border border-border px-8 py-12 text-center sm:px-12 sm:py-14">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Next step</h2>
             <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted">
-              If you want a site that loads fast, reads clearly on a phone, and supports your sales process — send a
+              If you want a site that loads fast, reads clearly on a phone, and supports your sales process, send a
               note. We will tell you honestly if we are the right fit.
             </p>
             <Link
               href="/contact"
               className="btn-primary-solid mt-8 inline-flex min-h-11 items-center justify-center rounded px-8 py-3.5 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
-              Get in touch
+              Get a free quote
             </Link>
           </div>
         </div>

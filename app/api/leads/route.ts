@@ -74,7 +74,7 @@ export async function POST(request: Request) {
       })
     }
 
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('leads')
       .insert([
         {
@@ -84,9 +84,23 @@ export async function POST(request: Request) {
           message: body.message ? String(body.message).trim() : null,
         },
       ])
-      .select()
 
     if (error) {
+      const tableMissing =
+        error.message.includes("Could not find the table 'public.leads'") ||
+        error.message.includes('relation "public.leads" does not exist')
+      if (tableMissing) {
+        return new Response(
+          JSON.stringify({
+            error:
+              "Supabase table 'public.leads' is missing. Run the SQL migration that creates the leads table, then retry.",
+          }),
+          {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+          }
+        )
+      }
       return new Response(JSON.stringify({ error: error.message }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
@@ -100,7 +114,7 @@ export async function POST(request: Request) {
     // Fire-and-forget: trigger n8n workflow asynchronously
     // n8n has built-in retry logic, so failures here won't block the response
     triggerN8nWorkflow(n8nWebhookUrl, {
-      id: data?.[0]?.id,
+      id: undefined,
       name: body.name!,
       email: body.email!,
       phone: body.phone,
@@ -109,7 +123,7 @@ export async function POST(request: Request) {
       console.error('Failed to trigger n8n workflow', err)
     })
 
-    return new Response(JSON.stringify({ data }), {
+    return new Response(JSON.stringify({ ok: true }), {
       status: 201,
       headers: { 'Content-Type': 'application/json' },
     })
@@ -121,4 +135,4 @@ export async function POST(request: Request) {
   }
 }
 
-export const runtime = 'edge'
+export const runtime = 'nodejs'
